@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+  <plugin-info>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+  </plugin-info>
+  <servlet-filter name="Spam Killer" i18n-name-key="spam-killer.name" key="spam-killer" class="org.jenkinsci.servlet.filter.SpamKiller" location="before-dispatch" weight="100">
+    <description key="spam-killer.description">The Spam Killer Plugin</description>
+    <url-pattern>/pages/docreatepage.action*</url-pattern>
+  </servlet-filter>
+</atlassian-plugin>
