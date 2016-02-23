@@ -9,5 +9,7 @@
   <servlet-filter name="Spam Killer" i18n-name-key="spam-killer.name" key="spam-killer" class="org.jenkinsci.servlet.filter.SpamKiller" location="before-dispatch" weight="100">
     <description key="spam-killer.description">The Spam Killer Plugin</description>
     <url-pattern>/pages/docreatepage.action*</url-pattern>
+    <url-pattern>/pages/doeditpage.action*</url-pattern>
+    <url-pattern>/pages/doaddcomment.action*</url-pattern>
   </servlet-filter>
 </atlassian-plugin>
