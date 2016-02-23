@@ -16,8 +16,6 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
@@ -49,9 +47,14 @@ public class SpamKiller implements Filter {
         }
         if (isSpammer) {
             log.warn("Spammer detected: {}", confluenceUser.toString());
-            HttpSession session = ((PluginHttpRequestWrapper) request).getSession();
-            session.invalidate();
-            ((HttpServletResponse) response).sendError(500, "Test");
+            ((PluginHttpRequestWrapper) request).getSession().invalidate();
+            response.setContentType("text/html");
+            response.getWriter().write("<html>" +
+                "<head><meta name='decorator' content='atl.general'></head>" +
+                "<body>" +
+                "<p>This action has been detected as spam.</p>" +
+                "</body>" +
+                "</html>");
         } else {
             chain.doFilter(request, response);
         }
