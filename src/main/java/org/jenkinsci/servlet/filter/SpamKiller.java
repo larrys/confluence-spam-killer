@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 public class SpamKiller implements Filter {
     private static final Logger log = LoggerFactory.getLogger(SpamKiller.class);
 
-    private final Pattern phoneNumberRegex = Pattern.compile(".*8(?:\\d{2})[ \\*~_\\-.=)]*\\d{3}[ \\*~_.\\-=]*\\d{4}.*");
+    private final Pattern phoneNumberRegex = Pattern.compile(".*8(?:\\d{2})[ \\*~_\\-.=)(]*\\d{3}[ \\*~_.\\-=)(]*\\d{4}.*");
     private final GroupManager groupManager = (GroupManager) ContainerManager.getComponent("groupManager");
 
     public void init(FilterConfig filterConfig) throws ServletException {}
